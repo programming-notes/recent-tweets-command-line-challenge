@@ -1,4 +1,4 @@
-# Recent Tweets 1
+# Recent Tweets 1 - Command Line Application
 
 ## Learning Competencies
 
@@ -132,7 +132,7 @@ Ok. Now we've built a simple wrapper that allows us to make Authenticated reques
 
 ### Release 2: Recent Tweets from API
 
-Create an interactive command line app that allows users to interact with the Twitter API. Next week, you'll create a live web application to do execute similar actions.
+Create an interactive command line app that allows users to interact with the Twitter API. Next week, you'll create a live web application to execute similar actions.
 
 Explore the [Twitter Developer Documentation](https://dev.twitter.com/overview/api) to decide which pieces of data you want your users to access. 
 
