@@ -132,24 +132,18 @@ Ok. Now we've built a simple wrapper that allows us to make Authenticated reques
 
 ### Release 2: Recent Tweets from API
 
-Create a routes that looks like this:
+Create an interactive command line app that allows users to interact with the Twitter API. Next week, you'll create a live web application to do execute similar actions.
 
-```ruby
-get '/' do
-end
+Explore the [Twitter Developer Documentation](https://dev.twitter.com/overview/api) to decide which pieces of data you want your users to access. 
 
-get '/:username' do
-end
-```
-
-Make `/:username` display the 10 most recent tweets of the supplied Twitter
+At an absolute minimum, a user should be able to supply a Twitter `username` and your application should display the 10 most recent tweets of the supplied Twitter
 username using the client you built in Release 1. Edit `environment.rb` to add any configuration (your credentials).
 
 Don't worry about leaking your development credentials into the public for now. 
 
 ### Release 3: Recent Tweets from your database
 
-The above URL will be pretty slow.  Every time you access it you have to make
+The above request will be pretty slow.  Every time you access it you have to make
 an API request, which could take a second or more.  Let's create a local cache
 of the results so it's only slow the first time we get a list of recent tweets.
 
@@ -157,19 +151,17 @@ Create models `Tweet` and `TwitterUser`.  Implement something like the
 following:
 
 ```ruby
-get '/:username' do
-  @user = TwitterUser.find_by_username(params[:username])
-  if @user.tweets.empty?
-    # User#fetch_tweets! should make an API call
-    # and populate the tweets table
-    #
-    # Future requests should read from the tweets table
-    # instead of making an API call
-    @user.fetch_tweets!
-  end
-
-  @tweets = @user.tweets.limit(10)
+@user = TwitterUser.find_by_username(params[:username])
+if @user.tweets.empty?
+  # User#fetch_tweets! should make an API call
+  # and populate the tweets table
+  #
+  # Future requests should read from the tweets table
+  # instead of making an API call
+  @user.fetch_tweets!
 end
+
+@tweets = @user.tweets.limit(10)
 ```
 
 Your code doesn't have to literally look like the code above, although it is a solid foundation. You will not be penalized if you write something
@@ -184,22 +176,20 @@ it's two years old.
 
 We need to flag when the cache is stale and re-fetch the data if it's stale.
 Let's say for now that the cache is stale if we've fetched the recent tweets
-within the last 15 minutes.  Change your controller code to work thus:
+within the last 15 minutes.  Change your code to work thus:
 
 ```ruby
-get '/:username' do
-  @user = TwitterUser.find_by_username(params[:username])
-  if @user.tweets_stale?
-    # User#fetch_tweets! should make an API call
-    # and populate the tweets table
-    #
-    # Future requests should read from the tweets table
-    # instead of making an API call
-    @user.fetch_tweets!
-  end
-
-  @tweets = @user.tweets
+@user = TwitterUser.find_by_username(params[:username])
+if @user.tweets_stale?
+  # User#fetch_tweets! should make an API call
+  # and populate the tweets table
+  #
+  # Future requests should read from the tweets table
+  # instead of making an API call
+  @user.fetch_tweets!
 end
+
+@tweets = @user.tweets
 ```
 
 The logic about what a "stale tweet" means should be in the `TwitterUser`
