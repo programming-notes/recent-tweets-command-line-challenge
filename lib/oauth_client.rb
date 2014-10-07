@@ -10,23 +10,27 @@ class OAuthClient
     @credentials = credentials
   end
 
-  def get(url)
-    # create the HTTP GET request
-    # request = # fill this in
+  def post(url)
+    # create the HTTP post request
+
+    #request = ** fill this in
+    #hint - this request is going to need some form data (aka your tweet)
 
     # set the Authorization Header using the oauth helper
     request["Authorization"] = oauth_header(request)
 
     # connect to the server and send the request
-    # response = # fill this in
+    #response = ** fill this in
+
+    return response
   end
 
   private
 
   # A helper method to generate the OAuth Authorization header given
   # an Net::HTTP::GenericRequest object and a Hash of params
-  def oauth_header(request, params = {})
-    SimpleOAuth::Header.new(request.method, request.uri, params, credentials).to_s
+  def oauth_header(request)
+    SimpleOAuth::Header.new(request.method, request.uri, URI.decode_www_form(request.body), credentials).to_s
   end
 
   def valid_credentials?(credentials)
@@ -37,10 +41,11 @@ end
 # sample usage:
 #
 # client = OAuthClient.new(
-#   consumer_key: "YOUR TWITTER API KEY",
-#   consumer_secret: "YOUR TWITTER API SECRET",
-#   token: "YOUR TWITTER ACCESS TOKEN",
-#   token_secret: "YOUR TWITTER ACCESS TOKEN SECRET"
+#   consumer_key: "YOUR TWITTER APP'S API KEY",
+#   consumer_secret: "YOU TWITTER APP'S API SECRET",
+#   token: "YOUR ACCESS TOKEN",
+#   token_secret: "YOUR ACCESS TOKEN SECRET"
 # )
 #
-# p JSON.parse(client.get("https://api.twitter.com/1.1/statuses/user_timeline.json").body)
+# p client.post("https://api.twitter.com/1.1/statuses/update.json").body
+
