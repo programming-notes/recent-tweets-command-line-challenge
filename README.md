@@ -2,10 +2,9 @@
 
 ## Learning Competencies
 
-* Use the MVC pattern in web applications with proper allocation of code and
-  responsibilities to each layer
-* Use Net::HTTP to connect to a third-party API
+* Use Net::HTTP to read data from a third-party API
 * Use Authorization header to authenticate using OAuth
+* Use the MVC pattern in web applications with proper allocation of code and responsibilities to each layer
 
 ## Summary
 
@@ -55,6 +54,10 @@ delegate authentication to a third-party, e.g., "Log in via Twitter," "Log in
 via Facebook," "Log in via Google," etc.
 
 You now have all the information you need to build a Twitter client.
+
+Now Take a moment to look at the code we've already given you. Think about what each part does. Figure out how to create migrations, how to run migrations, how to run the app.
+
+Hint: Start in `recent_tweets.rb`
 
 ### Release 1: Ruby Twitter Client
 
