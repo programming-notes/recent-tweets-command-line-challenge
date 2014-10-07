@@ -10,7 +10,7 @@ class OAuthClient
     @credentials = credentials
   end
 
-  def post(url)
+  def get(url)
     # create the HTTP post request
 
     #request = ** fill this in
@@ -47,5 +47,5 @@ end
 #   token_secret: "YOUR ACCESS TOKEN SECRET"
 # )
 #
-# p client.post("https://api.twitter.com/1.1/statuses/update.json").body
+# p client.get("https://api.twitter.com/1.1/statuses/user_timeline.json?count=10&screen_name=mikelikesbikes").body
 
