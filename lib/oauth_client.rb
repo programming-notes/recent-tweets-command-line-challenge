@@ -14,7 +14,6 @@ class OAuthClient
     # create the HTTP post request
 
     #request = ** fill this in
-    #hint - this request is going to need some form data (aka your tweet)
 
     # set the Authorization Header using the oauth helper
     request["Authorization"] = oauth_header(request)
