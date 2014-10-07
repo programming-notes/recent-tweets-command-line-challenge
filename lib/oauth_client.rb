@@ -29,7 +29,7 @@ class OAuthClient
   # A helper method to generate the OAuth Authorization header given
   # an Net::HTTP::GenericRequest object and a Hash of params
   def oauth_header(request)
-    SimpleOAuth::Header.new(request.method, request.uri, URI.decode_www_form(request.body), credentials).to_s
+    SimpleOAuth::Header.new(request.method, request.uri, URI.decode_www_form(request.body.to_s), credentials).to_s
   end
 
   def valid_credentials?(credentials)
