@@ -129,7 +129,7 @@ client = OAuthClient.new(
 client.get("https://api.twitter.com/1.1/statuses/user_timeline.json?count=10&screen_name=mikelikesbikes")
 ```
 
-You'll need to fill in the `#get` method, so that it uses the `url` to make `GET` requests to the Twitter API.
+You'll need to fill in the `#get` method, so that it uses the `url` to make `GET` requests to the Twitter API. If you need a HTTP refresher, feel free to dig into the resources listed at the bottom of this challenge. 
 
 Ok. Now we've built a simple wrapper that allows us to make Authenticated requests, using OAuth, to the Twitter API and get back responses. It's now time to parse the response and make them useful than a big string.
 
@@ -221,6 +221,9 @@ Implement one.
 
 ## Resources
 
+* [Net HTTP Library](http://www.sitepoint.com/ruby-net-http-library/)
+* [Net HTTP Cheat Sheet](http://www.rubyinside.com/nethttp-cheat-sheet-2940.html)
+* [Using the Net::HTTP Library](http://danknox.github.io/2013/01/27/using-rubys-native-nethttp-library/)
 * [Register an app at twitter][twitter app registry]
 * [OAuth Use with Twitter][twitter oauth]
 * [More on API keys][breakout session on api keys]
